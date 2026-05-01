@@ -1,5 +1,6 @@
 from db_connection import get_connection
 
+
 def crear_proveedor(nombre_empresa, pais, contacto, telefono):
     conn = get_connection()
     cursor = conn.cursor()
