@@ -1,11 +1,3 @@
-import auth_module
-import clientes_module
-import db_connection
-import facturacion_module
-import inventario_module
-import proveedores_module
-import pagos_module
-import proveedores_module
-import reportes_module
-import utils
+from clientes_module import crear_cliente
 
+crear_cliente("Carlos", "Lopez", "carlos1002@mail.com", "77777777")
