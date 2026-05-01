@@ -1,5 +1,12 @@
 from db_connection import get_connection
 
+CAMPOS_PERMITIDOS = {
+    "Nombres": "Nombres",
+    "Apellidos": "Apellidos",
+    "Email": "Email",
+    "Telefono": "Telefono"
+}
+
 def crear_cliente(nombre, apellido, email, telefono):
     conn = get_connection()
     cursor = conn.cursor()
