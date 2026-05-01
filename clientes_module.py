@@ -1,6 +1,5 @@
 from db_connection import get_connection
 
-
 def crear_cliente(nombre, apellido, email, telefono):
     conn = get_connection()
     cursor = conn.cursor()
