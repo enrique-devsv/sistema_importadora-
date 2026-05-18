@@ -1,5 +1,16 @@
 #Repositorio proyecto DLP, parte de Katherine Ortiz 
 # compras_module.py
+import pyodbc
+
+conexion = pyodbc.connect(
+    'DRIVER={SQL Server};'
+    'SERVER=localhost\\SQLEXPRESS;'
+    'DATABASE=ImportadoraDB;'
+    'Trusted_Connection=yes;'
+)
+
+cursor = conexion.cursor()
+
 
 def agregar_proveedor(cursor, conexion):
     try:
@@ -12,8 +23,8 @@ def agregar_proveedor(cursor, conexion):
             print("Nombre y pais son obligatorios")
             return
 
-        sql = "INSERT INTO Proveedores (NombreEmpresa, Pais, ContactoPrincipal, Telefono) VALUES (%s, %s, %s, %s)"
-        cursor.execute(sql, (NombreEmpresa, Pais, ContactoPrincipal, Telefono))
+        sql = "INSERT INTO Proveedores (NombreEmpresa, Pais, ContactoPrincipal, Telefono) VALUES ( ?, ?, ?, ?)"
+        cursor.execute(sql, (nombre, pais, contacto, telefono))
         conexion.commit()
 
         print("Proveedor agregado correctamente")
@@ -56,20 +67,20 @@ def asignar_producto_a_proveedor(cursor, conexion):
         CostoAcordado = float(CostoAcordado)
 
         # Verificar proveedor
-        cursor.execute("SELECT 1 FROM Proveedores WHERE ProveedorID = %s", (ProveedorID,))
+        cursor.execute("SELECT 1 FROM Proveedores WHERE ProveedorID = ?", (ProveedorID,))
         if not cursor.fetchone():
             print("El proveedor no existe.")
             return
 
         # Verificar producto
-        cursor.execute("SELECT 1 FROM Productos WHERE ProductoID = %s", (ProductoID,))
+        cursor.execute("SELECT 1 FROM Productos WHERE ProductoID = ?", (ProductoID,))
         if not cursor.fetchone():
             print("El producto no existe.")
             return
 
         sql = """
         INSERT INTO Producto_Proveedor (ProductoID, ProveedorID, CostoAcordado)
-        VALUES (%s, %s, %s)
+        VALUES (?, ?, ?)
         """
         cursor.execute(sql, (ProductoID, ProveedorID, CostoAcordado))
         conexion.commit()
@@ -92,7 +103,7 @@ def ver_productos_por_proveedor(cursor):
         SELECT p.ProductoID, p.Nombre, pp.PrecioVentaBase
         FROM Producto_Proveedor pp
         JOIN Productos p ON pp.ProductoID = p.ProductoID
-        WHERE pp.ProveedorID = %s
+        WHERE pp.ProveedorID = ?
         ORDER BY p.Nombre
         """
 
@@ -111,24 +122,10 @@ def ver_productos_por_proveedor(cursor):
         print(f"Error al consultar productos: {e}")
 
 
-        import mysql.connector
+print("Conexion exitosa")
 
-conexion = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="CONTRASEÑA",
-    database="ImportadoraDB"
-)
+
+     
 
 
 
-cursor = conexion.cursor()
-
-
-agregar_proveedor(cursor, conexion)
-ver_proveedores(cursor)
-asignar_producto_a_proveedor(cursor, conexion)
-ver_productos_por_proveedor(cursor)
-
-
-# ya
