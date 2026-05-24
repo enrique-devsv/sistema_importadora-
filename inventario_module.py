@@ -50,7 +50,7 @@ def registrar_ingreso_lote(cursor, id_prod, cantidad, precio_c, fecha_str):
             VALUES (?, ?, ?, ?, ?, GETDATE())
         """
         cursor.execute(query, (int(id_prod), int(cantidad), int(cantidad), float(precio_c), fecha_cad))
-        print("✅ Lote registrado correctamente.")
+        print("Lote registrado correctamente.")
     except Exception as e:
         print(f" Error al insertar en la base de datos: {e}")
 
@@ -80,4 +80,4 @@ def actualizar_precio_producto(cursor, sku, nuevo_precio):
         else:
             print(f" No se encontró ningún producto con el SKU: {sku}")
     except Exception as e:
-        print(f"❌ Error al actualizar el precio: {e}")
+        print(f" Error al actualizar el precio: {e}")
