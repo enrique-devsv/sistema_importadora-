@@ -5,7 +5,6 @@ import facturacion_module
 import inventario_module
 import proveedores_module
 import pagos_module
-import proveedores_module
-import reportes_module
+import reportes_modules
 import utils
 

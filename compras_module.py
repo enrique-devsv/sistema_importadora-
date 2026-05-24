@@ -3,8 +3,8 @@
 import pyodbc
 
 conexion = pyodbc.connect(
-    'DRIVER={SQL Server};'
-    'SERVER=localhost\\SQLEXPRESS;'
+    'DRIVER={ODBC Driver 17 for SQL Server};'
+    'SERVER=.\\SQLEXPRESS;'
     'DATABASE=ImportadoraDB;'
     'Trusted_Connection=yes;'
 )

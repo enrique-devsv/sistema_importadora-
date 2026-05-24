@@ -115,10 +115,6 @@ def procesar_devolucion(cursor):
         
         print("✅ Devolución procesada. El stock ha sido reintegrado y la factura ajustada.")
     except Exception as e:
-<<<<<<< HEAD
         print(f"❌ Error en devolución: {e}")
         # solo quiero subir mi codigo a github
         
-=======
-        print(f"❌ Error en devolución: {e}")
->>>>>>> 9ba5680d2cea11696f257c4811b3894c608d0779
