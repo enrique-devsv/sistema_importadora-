@@ -12,7 +12,7 @@ def get_connection():
 # prueba real
 try:
     conn = get_connection()
-    print("✅ Conexión exitosa")
+    print(" Conexión exitosa")
     conn.close()
 except Exception as e:
-    print("❌ Error:", e)
+    print(" Error:", e)
