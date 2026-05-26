@@ -1,0 +1,11 @@
+{
+    "git.autofetch": true,
+    "git.enableSmartCommit": false,
+    "githubPullRequests.remotes": ["origin"],
+    "githubPullRequests.ignoredPullRequestBranches": [],
+    "githubPullRequests.openOnChange": true,
+    "githubPullRequests.showInRepositoryView": true,
+    "githubPullRequests.defaultBranch": "main"
+}{
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+}
