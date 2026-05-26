@@ -5,7 +5,6 @@
     "githubPullRequests.ignoredPullRequestBranches": [],
     "githubPullRequests.openOnChange": true,
     "githubPullRequests.showInRepositoryView": true,
-    "githubPullRequests.defaultBranch": "main"
-}{
+    "githubPullRequests.defaultBranch": "main",
     "python-envs.defaultEnvManager": "ms-python.python:system"
 }
