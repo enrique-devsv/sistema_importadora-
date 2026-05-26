@@ -80,4 +80,3 @@ def actualizar_precio_producto(cursor, sku, nuevo_precio):
         else:
             print(f" No se encontró ningún producto con el SKU: {sku}")
     except Exception as e:
-        print(f" Error al actualizar el precio: {e}")

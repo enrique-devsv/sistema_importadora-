@@ -9,3 +9,5 @@ import proveedores_module
 import reportes_module
 import utils
 
+import pyodbc
+import ventas_module 
