@@ -19,10 +19,10 @@ def crear_factura(cursor):
         
         # Obtener el ID recién generado
         factura_id = cursor.fetchone()[0]
-        print(f"✅ Factura #{factura_id} iniciada con éxito.")
+        print(f" Factura #{factura_id} iniciada con éxito.")
         return factura_id
     except Exception as e:
-        print(f"❌ Error al crear factura: {e}")
+        print(f" Error al crear factura: {e}")
         return None
 
 def agregar_detalle_factura(cursor):
@@ -59,9 +59,9 @@ def agregar_detalle_factura(cursor):
         """
         cursor.execute(query_update_total, (factura_id, factura_id))
         
-        print(f"✅ Producto agregado. Inventario actualizado.")
+        print(f" Producto agregado. Inventario actualizado.")
     except Exception as e:
-        print(f"❌ Error al agregar detalle: {e}")
+        print(f" Error al agregar detalle: {e}")
 
 def ver_factura_completa(cursor):
     """
@@ -96,9 +96,9 @@ def ver_factura_completa(cursor):
             print("-" * 50)
             print(f"TOTAL A PAGAR: ${filas[0][8]}")
         else:
-            print("⚠️ No se encontró la factura o no tiene detalles.")
+            print(" No se encontró la factura o no tiene detalles.")
     except Exception as e:
-        print(f"❌ Error al visualizar factura: {e}")
+        print(f" Error al visualizar factura: {e}")
 
 def procesar_devolucion(cursor):
     """
@@ -113,8 +113,8 @@ def procesar_devolucion(cursor):
         # Ejecutar Procedimiento Almacenado de SQL
         cursor.execute("EXEC ProcesarDevolucion ?, ?, ?", (detalle_id, cantidad, motivo))
         
-        print("✅ Devolución procesada. El stock ha sido reintegrado y la factura ajustada.")
+        print(" Devolución procesada. El stock ha sido reintegrado y la factura ajustada.")
     except Exception as e:
-        print(f"❌ Error en devolución: {e}")
+        print(f" Error en devolución: {e}")
         # solo quiero subir mi codigo a github
         
