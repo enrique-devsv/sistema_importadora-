@@ -13,9 +13,9 @@ def crear_proveedor(nombre_empresa, pais, contacto, telefono):
     try:
         cursor.execute(query, (nombre_empresa, pais, contacto, telefono))
         conn.commit()
-        print("✅ Proveedor creado correctamente")
+        print(" Proveedor creado correctamente")
     except Exception as e:
-        print("❌ Error:", e)
+        print(" Error:", e)
     finally:
         conn.close()
 
@@ -28,7 +28,7 @@ def obtener_proveedores():
     filas = cursor.execute(query).fetchall()
 
     if not filas:
-        print("❌ No hay proveedores")
+        print(" No hay proveedores")
     else:
         for fila in filas:
             print(f"ID: {fila[0]}, Empresa: {fila[1]}, País: {fila[2]}, Contacto: {fila[3]}, Tel: {fila[4]}")
@@ -44,7 +44,7 @@ def obtener_proveedor_por_id(proveedor_id):
     fila = cursor.execute(query, (proveedor_id,)).fetchone()
 
     if not fila:
-        print("❌ Proveedor no encontrado")
+        print(" Proveedor no encontrado")
     else:
         print(f"ID: {fila[0]}, Empresa: {fila[1]}, País: {fila[2]}, Contacto: {fila[3]}, Tel: {fila[4]}")
 
@@ -66,11 +66,11 @@ def actualizar_proveedor(proveedor_id, nombre_empresa, pais, contacto, telefono)
         conn.commit()
 
         if cursor.rowcount == 0:
-            print(" ❌ Proveedor no encontrado")
+            print("  Proveedor no encontrado")
         else:
-            print(" ✅ Proveedor actualizado")
+            print("  Proveedor actualizado")
     except Exception as e:
-        print("❌ Error:", e)
+        print(" Error:", e)
     finally:
         conn.close()
 
@@ -86,10 +86,10 @@ def eliminar_proveedor(proveedor_id):
         conn.commit()
 
         if cursor.rowcount == 0:
-            print(" ❌ No se encontró el proveedor")
+            print("  No se encontró el proveedor")
         else:
-            print(" ✅ Proveedor eliminado")
+            print("  Proveedor eliminado")
     except Exception as e:
-        print("❌ Error:", e)
+        print(" Error:", e)
     finally:
         conn.close()
